@@ -1,0 +1,139 @@
+%\title{Article HW Template}
+
+\documentclass[12pt]{article}
+\usepackage[paper=a4paper,top=1in, bottom=1in, right=1in, left=.7in]{geometry}
+\usepackage{amsthm, amssymb, amsfonts, amsmath}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{tikz-cd}
+\usepackage{hyperref, mathabx}
+\usepackage{listings}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[greek,english]{babel}
+\usepackage{blindtext}
+
+\newcommand{\en}{\selectlanguage{english}}
+\newcommand{\gr}{\selectlanguage{greek}}
+
+\lstset { %to add C++ code manually
+	language=C++,
+	belowcaptionskip=1\baselineskip,
+	breaklines=true,
+	frame=none,
+	numbers=none, 
+	basicstyle=\footnotesize\ttfamily,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	backgroundcolor=\color{gray!10!white},
+	%how to use it
+	%\begin{lstlisting}
+	%	for (int i=0; i<iterations;i++){
+		%		do something
+		%	}
+	%\end{lstlisting}
+}
+%LISTA
+%\begin{enumerate}
+%		\item Basic Analysis of Algorithms (1-2 lessons)
+%		\item Sorting and Searching (4-5 lessons)
+%			\begin{enumerate}
+	%				\item Merge Sort
+	%				\item Quick Sort
+	%				\item Problems with sorting (Custom Comparators)
+	%				\item Binary Search
+	%				\item Problems with Binary Search
+	%			\end{enumerate}
+%\end{enumerate}
+
+%EIKONA
+%\begin{figure}[h]
+%			\centering
+%			\includegraphics[width=0.35\textwidth]{pic3}
+%			\caption{Παράδειγμα για το $test$ $case$ (2,9,10,6)}
+%			\label{fig:mesh1}
+%\end{figure}\\
+
+\newcommand{\boxitem}[2]{\vspace{.55cm}
+	%Numbered boxes that contain information inside
+	\item[#1]
+	\leavevmode
+	\strut
+	\vadjust{%%
+		\noindent
+		\raisebox{\dimexpr\dp\strutbox+\ht\strutbox+1ex}[0pt][0pt]{\tikzmark{bl}}}%%
+	#2
+	
+	\leavevmode
+	\vadjust{%
+		\noindent
+		\hspace*{\dimexpr\textwidth+1ex}\tikzmark{br}}%%
+	
+	\tikz[overlay,remember picture]{\draw[black]
+		(bl) rectangle
+		(br);}
+	%how to use it
+	%\begin{enumerate}[listparindent=1.5em, parsep = 0pt]
+	%\boxitem{1.}{
+		%bla bla bla
+		%}
+	%\boxitem{2.}{
+		%bla bla bla2
+		%}
+	%\end{enumerate}
+}
+
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\p}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newtheorem*{lemma}{Lemma}
+\newtheorem{llemma}{Lemma}
+\newtheorem*{lemmagr}{Λήμμα}
+\newtheorem{llemmagr}{Λήμμα}
+\newtheorem*{theorem}{Theorem}
+\newtheorem{ttheorem}{Theorem}
+\newtheorem*{theoremgr}{Θεώρημα}
+\newtheorem{ttheoremgr}{Θεώρημα}
+\newtheorem*{prop}{Proposition}
+\newtheorem{pprop}{Proposition}
+\newtheorem*{propgr}{Πρόταση}
+\newtheorem{ppropgr}{Πρόταση}
+\newtheorem*{example}{Example}
+\newtheorem{eexample}{Example}
+\newtheorem*{examplegr}{Παράδειγμα}
+\newtheorem{eexamplegr}{Παράδειγμα}
+\newtheorem*{deff}{Definition}
+\newtheorem{ddef}{Definition}
+\newtheorem*{defgr}{Ορισμός}
+\newtheorem{ddefgr}{Ορισμός}
+\newtheorem*{remark}{Remark}
+\newtheorem{rremark}{Remark}
+\newtheorem*{remarkgr}{Παρατήρηση}
+\newtheorem{rremarkgr}{Παρατήρηση}
+\newtheorem*{cor}{Corollary}
+\newtheorem{ccor}{Corollary}
+\newtheorem*{corgr}{Πόρισμα}
+\newtheorem{ccorgr}{Πόρισμα}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+%$T(n) = T(\ceil*{\frac{n}{2}} + O(1))$
+\begin{document}
+	\null\hfill\begin{tabular}[t]{r@{}}
+		Nikolas Mavrogeneiadis \\
+		gravitorious \\
+		\today
+	\end{tabular}
+	\centerline{\scshape{Algorithms Lessons}}
+	
+\end{document}
