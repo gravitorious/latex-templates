@@ -1,4 +1,3 @@
-%compile with LuaLaTeX
 %\title{Article HW Template}
 
 \documentclass[12pt]{article}
@@ -14,42 +13,46 @@
 \usepackage{hyperref, mathabx}
 \usepackage{listings}
 \usepackage[greek,english]{babel}
-\usepackage{blindtext}
+\usepackage{subfig}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \usepackage{fontspec}
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
 \setmainfont{CMU Serif}
 
 \newcommand{\en}{\selectlanguage{english}}
 \newcommand{\gr}{\selectlanguage{greek}}
 
 \lstset { %to add C++ code manually
-	language=C++,
-	belowcaptionskip=1\baselineskip,
-	breaklines=true,
-	frame=none,
-	numbers=none, 
-	basicstyle=\footnotesize\ttfamily,
-	keywordstyle=\bfseries\color{green!40!black},
-	commentstyle=\itshape\color{purple!40!black},
-	identifierstyle=\color{blue},
-	backgroundcolor=\color{gray!10!white},
-	%how to use it
-	%\begin{lstlisting}
-	%	for (int i=0; i<iterations;i++){
-		%		do something
-		%	}
-	%\end{lstlisting}
+language=C++,
+belowcaptionskip=1\baselineskip,
+breaklines=true,
+frame=none,
+numbers=left, 
+basicstyle=\footnotesize\ttfamily,
+keywordstyle=\bfseries\color{green!40!black},
+commentstyle=\itshape\color{purple!40!black},
+identifierstyle=\color{blue},
+backgroundcolor=\color{gray!10!white},
+%how to use it
+%\begin{lstlisting}
+%	for (int i=0; i<iterations;i++){
+%		do something
+%	}
+%\end{lstlisting}
 }
 %LISTA
 %\begin{enumerate}
 %		\item Basic Analysis of Algorithms (1-2 lessons)
 %		\item Sorting and Searching (4-5 lessons)
 %			\begin{enumerate}
-	%				\item Merge Sort
-	%				\item Quick Sort
-	%				\item Problems with sorting (Custom Comparators)
-	%				\item Binary Search
-	%				\item Problems with Binary Search
-	%			\end{enumerate}
+%				\item Merge Sort
+%				\item Quick Sort
+%				\item Problems with sorting (Custom Comparators)
+%				\item Binary Search
+%				\item Problems with Binary Search
+%			\end{enumerate}
 %\end{enumerate}
 
 %EIKONA
@@ -61,35 +64,37 @@
 %\end{figure}\\
 
 \newcommand{\boxitem}[2]{\vspace{.55cm}
-	%Numbered boxes that contain information inside
-	\item[#1]
-	\leavevmode
-	\strut
-	\vadjust{%%
-		\noindent
-		\raisebox{\dimexpr\dp\strutbox+\ht\strutbox+1ex}[0pt][0pt]{\tikzmark{bl}}}%%
-	#2
-	
-	\leavevmode
-	\vadjust{%
-		\noindent
-		\hspace*{\dimexpr\textwidth+1ex}\tikzmark{br}}%%
-	
-	\tikz[overlay,remember picture]{\draw[black]
-		(bl) rectangle
-		(br);}
-	%how to use it
-	%\begin{enumerate}[listparindent=1.5em, parsep = 0pt]
-	%\boxitem{1.}{
-		%bla bla bla
-		%}
-	%\boxitem{2.}{
-		%bla bla bla2
-		%}
-	%\end{enumerate}
+%Numbered boxes that contain information inside
+\item[#1]
+\leavevmode
+\strut
+\vadjust{%%
+\noindent
+\raisebox{\dimexpr\dp\strutbox+\ht\strutbox+1ex}[0pt][0pt]{\tikzmark{bl}}}%%
+#2
+
+\leavevmode
+\vadjust{%
+\noindent
+\hspace*{\dimexpr\textwidth+1ex}\tikzmark{br}}%%
+
+\tikz[overlay,remember picture]{\draw[black]
+(bl) rectangle
+(br);}
+%how to use it
+%\begin{enumerate}[listparindent=1.5em, parsep = 0pt]
+%\boxitem{1.}{
+	%bla bla bla
+%}
+%\boxitem{2.}{
+	%bla bla bla2
+%}
+%\end{enumerate}
 }
 
 \newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+
+\newtheorem{base}{Statement}[section]
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Q}{\mathbb{Q}}
@@ -98,43 +103,48 @@
 \newcommand{\p}{\mathbb{P}}
 \newcommand{\E}{\mathbb{E}}
 \newtheorem*{lemma}{Lemma}
-\newtheorem{llemma}{Lemma}
+\newtheorem{llemma}[base]{Lemma}
 \newtheorem*{lemmagr}{Λήμμα}
-\newtheorem{llemmagr}{Λήμμα}
+\newtheorem{llemmagr}[base]{Λήμμα}
 \newtheorem*{theorem}{Theorem}
-\newtheorem{ttheorem}{Theorem}
+\newtheorem{ttheorem}[base]{Theorem}
 \newtheorem*{theoremgr}{Θεώρημα}
-\newtheorem{ttheoremgr}{Θεώρημα}
+\newtheorem{ttheoremgr}[base]{Θεώρημα}
 \newtheorem*{prop}{Proposition}
-\newtheorem{pprop}{Proposition}
+\newtheorem{pprop}[base]{Proposition}
 \newtheorem*{propgr}{Πρόταση}
-\newtheorem{ppropgr}{Πρόταση}
+\newtheorem{ppropgr}[base]{Πρόταση}
 \newtheorem*{example}{Example}
-\newtheorem{eexample}{Example}
+\newtheorem{eexample}[base]{Example}
 \newtheorem*{examplegr}{Παράδειγμα}
-\newtheorem{eexamplegr}{Παράδειγμα}
+\newtheorem{eexamplegr}[base]{Παράδειγμα}
 \newtheorem*{deff}{Definition}
-\newtheorem{ddef}{Definition}
+\newtheorem{ddef}[base]{Definition}
 \newtheorem*{defgr}{Ορισμός}
-\newtheorem{ddefgr}{Ορισμός}
+\newtheorem{ddefgr}[base]{Ορισμός}
 \newtheorem*{remark}{Remark}
-\newtheorem{rremark}{Remark}
+\newtheorem{rremark}[base]{Remark}
 \newtheorem*{remarkgr}{Παρατήρηση}
-\newtheorem{rremarkgr}{Παρατήρηση}
+\newtheorem{rremarkgr}[base]{Παρατήρηση}
 \newtheorem*{cor}{Corollary}
-\newtheorem{ccor}{Corollary}
+\newtheorem{ccor}[base]{Corollary}
 \newtheorem*{corgr}{Πόρισμα}
-\newtheorem{ccorgr}{Πόρισμα}
+\newtheorem{ccorgr}[base]{Πόρισμα}
+
 
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 %$T(n) = T(\ceil*{\frac{n}{2}} + O(1))$
 \begin{document}
-	\null\hfill\begin{tabular}[t]{r@{}}
-		Nikolas Mavrogeneiadis \\
-		gravitorious \\
-		\today
-	\end{tabular}
-	\centerline{\scshape{Algorithms Lessons}}
+\null\hfill\begin{tabular}[t]{r@{}}
+Nikolas Mavrogeneiadis \\
+University of West Attica \\
+Informatics and Computer Engineering \\
+Athens, Greece \\
+\today
+\end{tabular}
+\centerline{\scshape{Prefix Sums}}\\[0.6em]
+%\vspace{1.0em}
+\gr
 	
 \end{document}
